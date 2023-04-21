@@ -194,14 +194,14 @@ class NetworkAccessManager(QNetworkAccessManager):
 
     def get_error(self, code):
         NET_ERROR_MSG = {
-            QNetworkReply.NoError: QCoreApplication.translate("NetError", "No error"),
-            QNetworkReply.ConnectionRefusedError: QCoreApplication.translate("NetError", "Connection Refused"),
-            QNetworkReply.RemoteHostClosedError: QCoreApplication.translate("NetError", "Server closed connection"),
-            QNetworkReply.HostNotFoundError: QCoreApplication.translate("NetError", "Host not found"),
-            QNetworkReply.TimeoutError: QCoreApplication.translate("NetError", "Connection timed out"),
-            QNetworkReply.OperationCanceledError: QCoreApplication.translate("NetError", "Connection cancelled"),
-            QNetworkReply.SslHandshakeFailedError: QCoreApplication.translate("NetError", "SSL handshake failed"),
-            QNetworkReply.TemporaryNetworkFailureError: QCoreApplication.translate("NetError", "Network Failure")
+            QNetworkReply.NetworkError.NoError: QCoreApplication.translate("NetError", "No error"),
+            QNetworkReply.NetworkError.ConnectionRefusedError: QCoreApplication.translate("NetError", "Connection Refused"),
+            QNetworkReply.NetworkError.RemoteHostClosedError: QCoreApplication.translate("NetError", "Server closed connection"),
+            QNetworkReply.NetworkError.HostNotFoundError: QCoreApplication.translate("NetError", "Host not found"),
+            QNetworkReply.NetworkError.TimeoutError: QCoreApplication.translate("NetError", "Connection timed out"),
+            QNetworkReply.NetworkError.OperationCanceledError: QCoreApplication.translate("NetError", "Connection cancelled"),
+            QNetworkReply.NetworkError.SslHandshakeFailedError: QCoreApplication.translate("NetError", "SSL handshake failed"),
+            QNetworkReply.NetworkError.TemporaryNetworkFailureError: QCoreApplication.translate("NetError", "Network Failure")
         }
 
         if code in NET_ERROR_MSG:
@@ -212,7 +212,7 @@ class NetworkAccessManager(QNetworkAccessManager):
     def slotFinished(self):
         reply = self.sender()
         if reply.error() != 0:
-            if reply.error() == QNetworkReply.ContentNotFoundError:
+            if reply.error() == QNetworkReply.NetworkError.ContentNotFoundError:
                 if self.ignoreNotFound:
                     self.networkResult.emit((True, b""))
                 else:
@@ -227,7 +227,7 @@ class NetworkAccessManager(QNetworkAccessManager):
         reply.deleteLater()
 
     def slotError(self, code):
-        print("Error %s while trying to access %s" % (code, self.url))
+        print("Error '%s' while trying to access %s" % (code, self.url))
         
     def slotSslErrors(self, errors):
         for e in errors:
@@ -258,7 +258,7 @@ class NetworkAccessManager(QNetworkAccessManager):
         reply.readyRead.connect(self.slotReadData)
         reply.downloadProgress.connect(self.slotProgress)
         reply.finished.connect(self.slotFinished)
-        reply.error.connect(self.slotError)
+        reply.errorOccurred.connect(self.slotError)
         reply.sslErrors.connect(self.slotSslErrors)
 
 class PackageLoader(NetworkAccessManager):

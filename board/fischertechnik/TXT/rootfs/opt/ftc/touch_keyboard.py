@@ -16,7 +16,7 @@ class TouchHandler(QObject):
                 text = widget.text()
                 cpos = widget.cursorPosition()
 
-                if event.type() == QEvent.MouseButtonPress:# TouchBegin
+                if event.type() == QEvent.Type.MouseButtonPress:# TouchBegin
                     keyboard = TouchKeyboard(widget)
 
                     keyboard.focus(text, 0)
