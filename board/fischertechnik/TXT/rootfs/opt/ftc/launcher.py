@@ -139,7 +139,7 @@ class StatusPopup(QFrame):
         self.setObjectName("statuspopup")
         self.setVisible(True)
         self.setAutoFillBackground(True)
-        self.setWindowFlags(Qt.Popup)
+        self.setWindowFlags(Qt.WindowType.Popup)
         # open popup centered on top of parent
         self.move(parent.mapToGlobal(QPoint(0, bar.height())))
         self.messages = [QLocale().toString(QDate.currentDate())]
@@ -157,7 +157,7 @@ class StatusPopup(QFrame):
             vbox.addWidget(label)
             if not line:
                 line = QFrame()
-                line.setFrameShape(QFrame.HLine)
+                line.setFrameShape(QFrame.Shape.HLine)
                 line.setObjectName("statusframe")
                 vbox.addWidget(line)
         self.setLayout(vbox)
@@ -615,7 +615,7 @@ class AppPopup(QFrame):
     
     def __init__(self, parent=None):
         super(AppPopup, self).__init__(parent)
-        self.setWindowFlags(Qt.Popup)
+        self.setWindowFlags(Qt.WindowType.Popup)
         self.setObjectName("popup")
         # remove bottom/right/left borders
         self.setStyleSheet("QFrame { border-bottom: 0; border-left: 0; border-right: 0; }")
