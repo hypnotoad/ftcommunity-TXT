@@ -154,11 +154,11 @@ class BusyAnimation(QWidget):
         self.bright = self.draw(16, QColor("#fcce04"))
         
     def draw(self, size, color):
-        img = QImage(size, size, QImage.Format_ARGB32)
-        img.fill(Qt.transparent)
+        img = QImage(size, size, QImage.Format.Format_ARGB32)
+        img.fill(QColorConstants.Transparent)
 
         painter = QPainter(img)
-        painter.setPen(Qt.white)
+        painter.setPen(QColorConstants.White)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width()-1, img.height()-1)
@@ -262,21 +262,21 @@ class FtcGuiPlugin(LauncherPlugin):
         label = QLabel(QCoreApplication.translate("BTRC", "The BT Control Set server is running."))
         label.setObjectName("smalllabel")
         label.setWordWrap(True)
-        label.setAlignment(Qt.AlignCenter)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.btrc_vbox.addWidget(label)        
         self.btrc_vbox.addStretch()
 
         label = QLabel(QCoreApplication.translate("BTRC", "You can connect with the blue transmitter from the BT Control Set or with a smart phone running the BlueTooth Control app."))
         label.setObjectName("tinylabel")
         label.setWordWrap(True)
-        label.setAlignment(Qt.AlignCenter)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.btrc_vbox.addWidget(label)        
         self.btrc_vbox.addStretch()
 
         label = QLabel(QCoreApplication.translate("BTRC", "Reboot your TXT to return to normal bluetooth operation."))
         label.setObjectName("tinylabel")
         label.setWordWrap(True)
-        label.setAlignment(Qt.AlignCenter)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.btrc_vbox.addWidget(label)        
         self.btrc_vbox.addStretch()
 

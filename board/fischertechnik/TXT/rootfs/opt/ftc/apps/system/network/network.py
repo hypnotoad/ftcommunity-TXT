@@ -340,7 +340,7 @@ class SmallLabel(QLabel):
     def __init__(self, str, parent = None):
         QLabel.__init__(self, str, parent)
         self.setObjectName("smalllabel")
-        self.setAlignment(Qt.AlignCenter)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 class SmallHighlightLabel(SmallLabel):
     clicked = pyqtSignal(int)
@@ -676,7 +676,7 @@ class DeletePermDialog(TouchDialog):
         lbl = QLabel(QCoreApplication.translate("Permissions", "Really delete this permission?"))
         lbl.setObjectName("smalllabel")
         lbl.setWordWrap(True)
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(lbl)
         vbox.addStretch()
         
@@ -688,18 +688,18 @@ class DeletePermDialog(TouchDialog):
             
         icn = QLabel()
         icn.setPixmap(QPixmap(os.path.join(os.path.dirname(os.path.realpath(__file__)),icon)))
-        icn.setAlignment(Qt.AlignCenter)
+        icn.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(icn)
         
         lbl = QLabel(perm[1][0])
         lbl.setObjectName("smalllabel")
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(lbl)
 
         if perm[1][1]:    
             lbl = QLabel(perm[1][1])
             lbl.setObjectName("tinylabel")
-            lbl.setAlignment(Qt.AlignCenter)
+            lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
             vbox.addWidget(lbl)
 
         vbox.addStretch()
@@ -707,7 +707,7 @@ class DeletePermDialog(TouchDialog):
         lbl = QLabel(QCoreApplication.translate("Permissions", "Changes take effect after next reboot."))
         lbl.setObjectName("tinylabel")
         lbl.setWordWrap(True)
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(lbl)
         
         vbox.addStretch()
@@ -757,21 +757,21 @@ class NetworkWindow(TouchWindow):
         self.vbox.addStretch()
 
         self.ip_lbl = QLabel(QCoreApplication.translate("Main", "Address")+":")
-        self.ip_lbl.setAlignment(Qt.AlignCenter)
+        self.ip_lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.ip_lbl)
 
         self.ip = QLabel("")
         self.ip.setObjectName("smalllabel")
-        self.ip.setAlignment(Qt.AlignCenter)
+        self.ip.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.ip)
    
         self.mask_lbl = QLabel(QCoreApplication.translate("Main", "Netmask")+":")
-        self.mask_lbl.setAlignment(Qt.AlignCenter)
+        self.mask_lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.mask_lbl)
 
         self.mask = QLabel("")
         self.mask.setObjectName("smalllabel")
-        self.mask.setAlignment(Qt.AlignCenter)
+        self.mask.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.mask)
 
         self.vbox.addStretch()
@@ -865,12 +865,12 @@ class NetworkWindow(TouchWindow):
         vbox = QVBoxLayout()
         vbox.addStretch()
         err = QLabel(QCoreApplication.translate("Main", "File Error"))
-        err.setAlignment(Qt.AlignCenter)
+        err.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(err)
         lbl = QLabel(str)
         lbl.setObjectName("smalllabel")
         lbl.setWordWrap(True)
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         vbox.addWidget(lbl)
         vbox.addStretch()

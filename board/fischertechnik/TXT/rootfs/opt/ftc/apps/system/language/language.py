@@ -37,7 +37,7 @@ class FtcGuiPlugin(LauncherPlugin):
         self.vbox.addStretch()
 
         self.icon = QLabel()
-        self.icon.setAlignment(Qt.AlignCenter)
+        self.icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.icon.setPixmap(QPixmap(os.path.join(appdir, "english.png")))
         self.vbox.addWidget(self.icon)
 

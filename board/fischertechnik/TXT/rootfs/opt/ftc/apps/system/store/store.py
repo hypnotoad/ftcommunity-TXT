@@ -137,11 +137,11 @@ class BusyAnimation(QWidget):
         self.repaint()
     
     def draw(self, size, color):
-        img = QImage(size, size, QImage.Format_ARGB32)
-        img.fill(Qt.transparent)
+        img = QImage(size, size, QImage.Format.Format_ARGB32)
+        img.fill(QColorConstants.Transparent)
 
         painter = QPainter(img)
-        painter.setPen(Qt.white)
+        painter.setPen(QColorConstants.White)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width()-1, img.height()-1)
@@ -173,7 +173,7 @@ class BusyAnimation(QWidget):
             painter.setFont(font)
 
             # draw text in center
-            painter.drawText(QRect(0, 0, self.width(), self.height()), Qt.AlignCenter, str(self.percent)+"%" )
+            painter.drawText(QRect(0, 0, self.width(), self.height()), Qt.AlignmentFlag.AlignCenter, str(self.percent)+"%" )
 
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
@@ -389,7 +389,7 @@ class NewRepoDialog(TouchDialog):
 
         # currently only github repositories are supported
         gh = QLabel(QCoreApplication.translate("NewRepo", "Github:"), self)
-        gh.setAlignment(Qt.AlignCenter)
+        gh.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(gh)
             
         self.gh_user = self.EntryWidget(QCoreApplication.translate("NewRepo", "User:"), self)

@@ -136,7 +136,7 @@ class AboutPlugin(LauncherPlugin):
                                                      "community edition"))
         self.txt.setObjectName("smalllabel")
         self.txt.setWordWrap(True)
-        self.txt.setAlignment(Qt.AlignCenter)
+        self.txt.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.txt)
 
         self.vbox.addStretch()
@@ -144,7 +144,7 @@ class AboutPlugin(LauncherPlugin):
         self.c = QLabel(QCoreApplication.translate("FtcGuiApplication","(c) 2016-2022 the ft:community"))
         self.c.setObjectName("tinylabel")
         self.c.setWordWrap(True)
-        self.c.setAlignment(Qt.AlignCenter)
+        self.c.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox.addWidget(self.c)
 
         self.vbox.addStretch()

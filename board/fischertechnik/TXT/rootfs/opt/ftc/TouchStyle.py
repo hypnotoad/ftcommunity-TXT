@@ -124,8 +124,8 @@ class TouchTitle(QLabel):
     def __init__(self, str, parent=None):
         super(TouchTitle, self).__init__(str, parent)
         self.setObjectName("titlebar")
-        self.setAlignment(Qt.AlignCenter)
-        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Fixed)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         self.close = QPushButton(self)
         self.close.setObjectName("closebut")
         self.parent = parent
@@ -136,7 +136,7 @@ class TouchTitle(QLabel):
         self.confbut = None
 
     def eventFilter(self, obj, event):
-        if event.type() == event.Resize:
+        if event.type() == QEvent.Type.Resize:
             self.close.move(self.width() - 40, self.height() // 2 - 20)
             if self.menubut:
                 self.menubut.move(8, self.height() // 2 - 20)
@@ -412,7 +412,7 @@ class TouchMessageBox(TouchDialog):
         elif self.textSize == 1:
             textfield.setObjectName("tinylabel")
 
-        textfield.setAlignment(Qt.AlignCenter)
+        textfield.setAlignment(Qt.AlignmentFlag.AlignCenter)
         textfield.setReadOnly(True)
         self.layout.addWidget(textfield)
         

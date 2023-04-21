@@ -285,10 +285,10 @@ class BusyAnimation(QWidget):
         self.bright = self.draw(16, QColor("#fcce04"))
         
     def draw(self, size, color):
-        img = QImage(size, size, QImage.Format_ARGB32)
-        img.fill(Qt.transparent)
+        img = QImage(size, size, QImage.Format.Format_ARGB32)
+        img.fill(QColorConstants.Transparent)
         painter = QPainter(img)
-        painter.setPen(Qt.white)
+        painter.setPen(QColorConstants.White)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width() - 1, img.height() - 1)
@@ -630,7 +630,7 @@ class AppPopup(QFrame):
         title = QLabel(self.parent().app["name"], self)
         title.setObjectName("titlebar")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        title.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Fixed)
+        title.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         vbox.addWidget(title)
         self.setLayout(vbox)
         # get access to the icongrid

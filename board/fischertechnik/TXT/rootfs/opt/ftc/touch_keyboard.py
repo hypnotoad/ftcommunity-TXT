@@ -112,7 +112,7 @@ class TouchKeyboard(TouchDialog):
 
         self.line = self.FocusLineEdit()
         self.line.setProperty("nopopup", True)
-        self.line.setAlignment(Qt.AlignCenter)
+        self.line.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.line.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         self.layout.addWidget(self.line)
         

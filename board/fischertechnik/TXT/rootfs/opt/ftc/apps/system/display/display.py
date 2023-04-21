@@ -70,7 +70,7 @@ class DisplaySettingsPlugin(LauncherPlugin):
 
         lbl = QLabel(text)
         lbl.setWordWrap(True);
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(lbl)
 
         layout.addStretch()

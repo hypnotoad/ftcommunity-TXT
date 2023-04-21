@@ -108,7 +108,7 @@ class TouchAuxMultibutton(TouchDialog):
             elif self.textSize==1:
                 msg.setObjectName("tinylabel")
             msg.setWordWrap(True)
-            msg.setAlignment(Qt.AlignCenter)
+            msg.setAlignment(Qt.AlignmentFlag.AlignCenter)
             mh.addWidget(msg)
             self.layout.addLayout(mh)
         
@@ -334,7 +334,7 @@ class TouchAuxCamWidget(QWidget):
 
         if not self.cap.isOpened():
             painter.drawText(QRect(QPoint(0,0), self.size()),
-                             Qt.AlignCenter, 
+                             Qt.AlignmentFlag.AlignCenter, 
                              "No camera")
         else:
             self.grab()
@@ -377,7 +377,7 @@ class TouchAuxListRequester(TouchDialog):
             msg=QLabel(message)
             msg.setObjectName("smalllabel")
             msg.setWordWrap(True)
-            msg.setAlignment(Qt.AlignCenter)
+            msg.setAlignment(Qt.AlignmentFlag.AlignCenter)
             mh.addWidget(msg)
             self.layout.addLayout(mh)
             
@@ -476,7 +476,7 @@ class TouchAuxRequestInteger(TouchDialog):
             msg=QLabel(message)
             msg.setObjectName("smalllabel")
             msg.setWordWrap(True)
-            msg.setAlignment(Qt.AlignCenter)
+            msg.setAlignment(Qt.AlignmentFlag.AlignCenter)
             mh.addWidget(msg)
             self.layout.addLayout(mh)
             
@@ -499,7 +499,7 @@ class TouchAuxRequestInteger(TouchDialog):
         
         midbox.addStretch()
         self.actval = QLabel()
-        self.actval.setAlignment(Qt.AlignCenter)
+        self.actval.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.actval.setText(str(self.dial.value()))
         midbox.addWidget(self.actval)
         midbox.addStretch()
@@ -580,7 +580,7 @@ class TouchAuxRequestText(TouchDialog):
         msg=QLabel(message)
         msg.setWordWrap(True)
         msg.setObjectName("smalllabel")
-        msg.setAlignment(Qt.AlignCenter)
+        msg.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layout.addWidget(msg)
         self.layout.addStretch()
         
@@ -588,7 +588,7 @@ class TouchAuxRequestText(TouchDialog):
         self.txline=QLineEdit()
         #self.txline.setReadOnly(True)
         self.txline.setText(inittext)
-        self.txline.setAlignment(Qt.AlignCenter)
+        self.txline.setAlignment(Qt.AlignmentFlag.AlignCenter)
         #self.txline.mousePressEvent = self.gettext
         self.layout.addWidget(self.txline)
         #self.layout.addStretch()
