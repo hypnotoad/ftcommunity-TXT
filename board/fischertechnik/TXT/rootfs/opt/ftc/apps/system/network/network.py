@@ -748,7 +748,7 @@ class NetworkWindow(TouchWindow):
         self.vbox = QVBoxLayout()
 
         self.nets_w = QComboBox()
-        self.nets_w.activated[str].connect(self.set_net)
+        self.nets_w.textActivated[str].connect(self.set_net)
         for i in names:
             self.nets_w.addItem(i)
 

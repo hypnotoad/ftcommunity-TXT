@@ -44,9 +44,8 @@ class FtcGuiPlugin(LauncherPlugin):
         self.vbox.addStretch()
 
         self.lang_w = QComboBox()
-        self.lang_w.activated[str].connect(self.set_lang)
+        self.lang_w.textActivated[str].connect(self.set_lang)
         self.vbox.addWidget(self.lang_w)
-   
         self.vbox.addStretch()
 
         self.update_gui()

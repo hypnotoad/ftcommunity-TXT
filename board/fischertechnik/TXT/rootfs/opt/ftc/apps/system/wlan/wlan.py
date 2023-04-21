@@ -219,7 +219,7 @@ class FtcGuiPlugin(LauncherPlugin):
         self.encr_key = ""
         
         self.ssids_w = QComboBox()
-        self.ssids_w.activated[str].connect(self.set_default_encryption)
+        self.ssids_w.textActivated[str].connect(self.set_default_encryption)
         self.ssids_w.setCurrentIndex(-1)
         self.vbox.addWidget(self.ssids_w)
 
