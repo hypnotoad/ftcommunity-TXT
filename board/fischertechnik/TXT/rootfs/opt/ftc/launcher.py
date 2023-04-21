@@ -346,7 +346,7 @@ class FolderName(TouchKeyboard):
 class FolderOpIcon(QToolButton):
     def __init__(self, type, parent=None):
         super(FolderOpIcon, self).__init__(parent)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.setToolButtonStyle(Qt.ToolButtonIconOnly)
         pix = Icon(type + ".png")
         icon = QIcon(pix)

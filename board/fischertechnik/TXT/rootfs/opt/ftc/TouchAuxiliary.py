@@ -386,7 +386,7 @@ class TouchAuxListRequester(TouchDialog):
         self.itemlist.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
         QScroller.grabGesture(self.itemlist.viewport(), QScroller.ScrollerGestureType.LeftMouseButtonGesture);
         self.itemlist.setObjectName("smalllabel")
-        self.itemlist.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
+        self.itemlist.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.itemlist.addItems(items)
         self.itemlist.currentItemChanged.connect(self.on_itemchanged)
 
@@ -482,7 +482,7 @@ class TouchAuxRequestInteger(TouchDialog):
             
         # the dial 
         self.dial=QDial()
-        self.dial.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
+        self.dial.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.dial.setNotchesVisible(True)
         self.dial.setRange(minval,maxval)
         self.dial.setValue(initvalue)

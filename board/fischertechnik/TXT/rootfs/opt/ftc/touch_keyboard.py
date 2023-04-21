@@ -60,14 +60,14 @@ class TouchKeyboard(TouchDialog):
                 # half the normal font size
                 font = painter.font()
                 if font.pointSize() > 0:
-                    font.setPointSize(font.pointSize() * self.SUBSCRIPT_SCALE)
+                    font.setPointSize(round(font.pointSize() * self.SUBSCRIPT_SCALE))
                 else:
-                    font.setPixelSize(font.pixelSize() * self.SUBSCRIPT_SCALE)
+                    font.setPixelSize(round(font.pixelSize() * self.SUBSCRIPT_SCALE))
                     
                 painter.setFont(font)
 
                 # draw the time at the very right
-                painter.drawText(self.contentsRect().adjusted(0,3,-5,-3), Qt.AlignRight, self.sub)
+                painter.drawText(self.contentsRect().adjusted(0,3,-5,-3), Qt.AlignmentFlag.AlignRight, self.sub)
                 painter.end()
 
     # a subclassed QLineEdit that grabs focus once it has
@@ -158,7 +158,7 @@ class TouchKeyboard(TouchDialog):
                     but = self.KbdButton(keys[a][cnt], subs[a][cnt])
                     but.clicked.connect(self.key_pressed)
 
-                but.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
+                but.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
                 if w < h:
                     page.grid.addWidget(but, cnt // 4, cnt % 4)
                 else:
@@ -168,7 +168,7 @@ class TouchKeyboard(TouchDialog):
             self.tab.addTab(page, self.keys_tab[a])
 
         self.tab.tabBar().setExpanding(True)
-        self.tab.tabBar().setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
+        self.tab.tabBar().setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.layout.addWidget(self.tab)
     
     def focus(self, str, cpos):
