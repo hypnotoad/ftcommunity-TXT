@@ -577,11 +577,11 @@ class FolderList(TouchDialog):
         def __init__(self, apps, parent=None):
             QListWidget.__init__(self, parent)
             self.setUniformItemSizes(True)
-            self.setViewMode(QListView.ListMode)
-            self.setMovement(QListView.Static)
+            self.setViewMode(QListView.ViewMode.ListMode)
+            self.setMovement(QListView.Movement.Static)
             self.setIconSize(QSize(32, 32))
-            #self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-            #QScroller.grabGesture(self.viewport(), QScroller.LeftMouseButtonGesture);
+            #self.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
+            #QScroller.grabGesture(self.viewport(), QScroller.ScrollerGestureType.LeftMouseButtonGesture);
 
             # add all folders
             for a in apps:

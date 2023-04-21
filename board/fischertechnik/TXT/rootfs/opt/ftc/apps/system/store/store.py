@@ -463,8 +463,8 @@ class AppDialog(TouchDialog):
 
         text = QTextEdit()
         text.setReadOnly(True)
-        text.setTextInteractionFlags (QtCore.Qt.NoTextInteraction)    
-        QScroller.grabGesture(text.viewport(), QScroller.LeftMouseButtonGesture);
+        text.setTextInteractionFlags (QtCore.Qt.TextInteractionFlag.NoTextInteraction)    
+        QScroller.grabGesture(text.viewport(), QScroller.ScrollerGestureType.LeftMouseButtonGesture);
         
         for i in sorted(parms):
             if(AppDialog.format(i)):
@@ -611,12 +611,12 @@ class AppListWidget(QListWidget):
     def __init__(self, parent=None):
         super(AppListWidget, self).__init__(parent)
 
-        self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-        QScroller.grabGesture(self.viewport(), QScroller.LeftMouseButtonGesture);
+        self.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
+        QScroller.grabGesture(self.viewport(), QScroller.ScrollerGestureType.LeftMouseButtonGesture);
         
         self.setUniformItemSizes(True)
-        self.setViewMode(QListView.ListMode)
-        self.setMovement(QListView.Static)
+        self.setViewMode(QListView.ViewMode.ListMode)
+        self.setMovement(QListView.Movement.Static)
         self.setIconSize(QSize(32,32))
         self.parent = parent
 

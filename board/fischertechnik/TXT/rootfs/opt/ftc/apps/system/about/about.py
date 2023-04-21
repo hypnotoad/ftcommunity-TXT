@@ -14,8 +14,8 @@ class LicenseDialog(TxtDialog):
         
         txt = QTextEdit()
         txt.setReadOnly(True)
-        txt.setTextInteractionFlags (QtCore.Qt.NoTextInteraction)    
-        QScroller.grabGesture(txt.viewport(), QScroller.LeftMouseButtonGesture);
+        txt.setTextInteractionFlags (QtCore.Qt.TextInteractionFlag.NoTextInteraction)    
+        QScroller.grabGesture(txt.viewport(), QScroller.ScrollerGestureType.LeftMouseButtonGesture);
 
         # load gpl from disk
         name = os.path.join(os.path.dirname(os.path.realpath(__file__)), lic)
@@ -95,7 +95,7 @@ class VersionsDialog(TxtDialog):
 
         # put everything inside a scroll area
         scroll = QScrollArea(self.centralWidget)
-        QScroller.grabGesture(scroll, QScroller.LeftMouseButtonGesture);
+        QScroller.grabGesture(scroll, QScroller.ScrollerGestureType.LeftMouseButtonGesture);
         
         scroll.setWidget(vbox_w)
 
