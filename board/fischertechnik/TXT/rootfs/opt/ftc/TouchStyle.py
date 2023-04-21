@@ -267,12 +267,12 @@ class TouchDialog(QDialog):
         return self.titlebar.setCancelButton()
         
     # TXT windows are always fullscreen
-    def exec_(self):
+    def exec(self):
         if TXT or TXPI and not DEV:
             QWidget.showFullScreen(self)
         else:
             QWidget.show(self)
-        QDialog.exec_(self)
+        QDialog.exec(self)
 
 
 class TouchMessageBox(TouchDialog):
@@ -304,7 +304,7 @@ class TouchMessageBox(TouchDialog):
         
         Return values:
         
-        (success, text) = msg.exec_()
+        (success, text) = msg.exec()
         success == True if one of the buttons or the confirm button was used
         success == False if MessageBox was closed by its close icon (top right)
         
@@ -382,7 +382,7 @@ class TouchMessageBox(TouchDialog):
         self.result = self.sender().text()
         self.close()
      
-    def exec_(self):
+    def exec(self):
         self.result = ""
         self.layout = QVBoxLayout()
         
@@ -480,7 +480,7 @@ class TouchMessageBox(TouchDialog):
         self.centralWidget.setLayout(self.layout)
         
         # and run...
-        TouchDialog.exec_(self)
+        TouchDialog.exec(self)
         if self.confbutclicked == True:
             return True, None
         if self.result:

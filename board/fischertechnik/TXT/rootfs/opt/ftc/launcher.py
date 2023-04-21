@@ -48,9 +48,9 @@ class PlainDialog(QDialog):
         self.setFixedSize(getScreenSize())
         self.setObjectName("centralwidget")
 
-    def exec_(self):
+    def exec(self):
         QDialog.showFullScreen(self)
-        QDialog.exec_(self)
+        QDialog.exec(self)
 
 
 class MessageDialog(PlainDialog):
@@ -716,7 +716,7 @@ class AppPopup(QFrame):
         folder_list = FolderList(icongrid.apps, self)
         folder_list.selected.connect(self.on_move_to_folder)
         folder_list.show()
-        folder_list.exec_()
+        folder_list.exec()
 
     def move_to_folder(self, folder):
         # parent is the appicon, parent.parent is the icongrid
@@ -744,7 +744,7 @@ class AppPopup(QFrame):
         # request name of new folder from user
         folder_name = FolderName(self)
         folder_name.show()
-        folder_name.exec_()
+        folder_name.exec()
         text = folder_name.text()
         if text:
             self.on_new_folder(text)
@@ -1059,7 +1059,7 @@ class Launcher(TouchApplication):
         self.log_file = None
         self.popup = None
         self.addWidgets()
-        self.exec_()        
+        self.exec()        
 
     # read locale from /etc/locale
     def locale_read(self):
@@ -1276,10 +1276,10 @@ class Launcher(TouchApplication):
     def on_get_app(self, s):
         if self.app_is_running():
             # only return the <group>/<app>/<exec> part of the path
-            app_dir, app_exec_name = os.path.split(self.app_executable)
+            app_dir, app_execname = os.path.split(self.app_executable)
             app_group, app_dir_name = os.path.split(app_dir)
             app_group_name = os.path.basename(app_group)
-            s.write(os.path.join(app_group_name, app_dir_name, app_exec_name).encode("utf8"))
+            s.write(os.path.join(app_group_name, app_dir_name, app_execname).encode("utf8"))
         s.write("\n".encode("utf8"))
 
     def on_stop_app(self):
@@ -1424,10 +1424,10 @@ class Launcher(TouchApplication):
 
     def on_message(self, str):
         str = QCoreApplication.translate("Messages", str)
-        MessageDialog(str).exec_()
+        MessageDialog(str).exec()
 
     def on_confirm(self, sock, str):
-        ConfirmationDialog(sock, str).exec_()
+        ConfirmationDialog(sock, str).exec()
 
     def on_open_folder(self, apps):
         self.icons.setApps(apps)

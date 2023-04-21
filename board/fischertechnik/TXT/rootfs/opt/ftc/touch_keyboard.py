@@ -20,7 +20,7 @@ class TouchHandler(QObject):
                     keyboard = TouchKeyboard(widget)
 
                     keyboard.focus(text, 0)
-                    keyboard.exec_()
+                    keyboard.exec()
                     widget.setText(keyboard.text())
                         
 

@@ -31,7 +31,7 @@ if __name__ == "__main__":
         def __init__(self, args):
             super().__init__(args)
             module = FtcGuiPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):

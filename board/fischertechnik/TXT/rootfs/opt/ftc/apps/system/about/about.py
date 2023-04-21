@@ -155,28 +155,28 @@ class AboutPlugin(LauncherPlugin):
     def show_license_gpl(self):
         dialog = LicenseDialog(QCoreApplication.translate("FtcGuiApplication", "GPL"),
                                QCoreApplication.translate("FtcGuiApplication", "gpl.txt"), self.mainWindow)
-        dialog.exec_()
+        dialog.exec()
 
     def show_license_lgpl(self):
         dialog = LicenseDialog(QCoreApplication.translate("FtcGuiApplication", "LGPL"),
                                QCoreApplication.translate("FtcGuiApplication", "lgpl.txt"), self.mainWindow)
-        dialog.exec_()
+        dialog.exec()
 
     def show_license_mit(self):
         dialog = LicenseDialog(QCoreApplication.translate("FtcGuiApplication", "MIT"),
                                QCoreApplication.translate("FtcGuiApplication", "mit.txt"), self.mainWindow)
-        dialog.exec_()
+        dialog.exec()
 
     def show_version(self):
         dialog = VersionsDialog(QCoreApplication.translate("FtcGuiApplication", "Versions"), self.mainWindow)
-        dialog.exec_()
+        dialog.exec()
 
 if __name__ == "__main__":
     class FtcGuiApplication(TouchApplication):
         def __init__(self, args):
             super().__init__(args)
             module = AboutPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):

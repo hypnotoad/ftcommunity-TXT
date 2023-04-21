@@ -30,7 +30,7 @@ class TouchAuxMultibutton(TouchDialog):
         ******** function call **********
         msg = TouchAuxMultibutton(title:str, parent:class)
          ... some of the methods to configure
-        (succes:bool, result:str) = msg.exec_()
+        (succes:bool, result:str) = msg.exec()
         
         with title:str       Title of the input window
         
@@ -85,7 +85,7 @@ class TouchAuxMultibutton(TouchDialog):
         self.result=self.sender().text()
         self.close()
         
-    def exec_(self):
+    def exec(self):
         self.layout=QVBoxLayout()
         
         # orientation
@@ -159,7 +159,7 @@ class TouchAuxMultibutton(TouchDialog):
            self.setCancelButton()
         
         self.centralWidget.setLayout(self.layout) 
-        TouchDialog.exec_(self)
+        TouchDialog.exec(self)
         if self.result!=None: return True,self.result
         return False,None
       
@@ -170,7 +170,7 @@ class TouchAuxFTCamPhotoRequester(TouchDialog):
         *********** function call ******************
         
         req = TouchAuxFTCamPhotoRequester(self, title:str, width:int, height:int, button:str, parent=None)
-        img:QPixmap = req.exec_()
+        img:QPixmap = req.exec()
         
         title:str       title of the requester window
         width:int       width setpoint for the image 
@@ -224,8 +224,8 @@ class TouchAuxFTCamPhotoRequester(TouchDialog):
         self.cw.closeCam()
         self.close()
         
-    def exec_(self):
-        TouchDialog.exec_(self)
+    def exec(self):
+        TouchDialog.exec(self)
         return self.img
       
 def TouchAuxFTCamIsPresent():
@@ -432,8 +432,8 @@ class TouchAuxListRequester(TouchDialog):
     def on_cbc(self):
         self.confbutclicked=True
     
-    def exec_(self):
-        TouchDialog.exec_(self)
+    def exec(self):
+        TouchDialog.exec(self)
         if self.confbutclicked==True: return True, self.itemlist.currentItem().text()
         if self.result==self.button: return True, self.itemlist.currentItem().text()
         return False, self.inititem
@@ -540,8 +540,8 @@ class TouchAuxRequestInteger(TouchDialog):
         if self.result=="": self.result=self.button        
         self.close()
     
-    def exec_(self):
-        TouchDialog.exec_(self)
+    def exec(self):
+        TouchDialog.exec(self)
 
         if self.result==self.button: return True, self.dial.value()
         return False, self.initvalue
@@ -610,7 +610,7 @@ class TouchAuxRequestText(TouchDialog):
     
     #def gettext(self,msg):
         #kbd=TouchAuxKeyboard("Input",self.txline.text(),None)
-        #self.txline.setText(kbd.exec_())
+        #self.txline.setText(kbd.exec())
     
     def on_cbc(self):
        self.confbutclicked=True
@@ -619,8 +619,8 @@ class TouchAuxRequestText(TouchDialog):
         self.result = self.sender().text()
         self.close()
      
-    def exec_(self):
-        TouchDialog.exec_(self)
+    def exec(self):
+        TouchDialog.exec(self)
         
         if self.confbutclicked==True: return True, self.txline.text()
         if self.result==self.button: return True, self.txline.text()
@@ -692,8 +692,8 @@ class TouchAuxKeyboard(TouchKeyboard):
         except:
             pass
         
-    def exec_(self):
-        TouchKeyboard.exec_(self)
+    def exec(self):
+        TouchKeyboard.exec(self)
         return self.text()
         
 

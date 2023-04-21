@@ -529,7 +529,7 @@ class IpWidget(QWidget):
     def on_click(self):
         dialog = IpEdit(self.lbl.text(), self.value, self)
         dialog.address.connect(self.on_new_address)
-        dialog.exec_()
+        dialog.exec()
 
     def on_new_address(self, str):
         if str:
@@ -798,7 +798,7 @@ class NetworkWindow(TouchWindow):
 
     def edit_perm(self):
         dialog = EditPermDialog(self.pfile, self)
-        dialog.exec_()
+        dialog.exec()
 
     def edit_dns(self):
         # use nameservers resolv.conf on busybox system, otherwise from interfaces file
@@ -808,7 +808,7 @@ class NetworkWindow(TouchWindow):
         
         dialog = EditDnsDialog(dns_servers, self)
         dialog.changed.connect(self.on_dns_changed)
-        dialog.exec_()
+        dialog.exec()
 
     def on_dns_changed(self, nameserver):
         if self.resolv_conf:
@@ -823,7 +823,7 @@ class NetworkWindow(TouchWindow):
         if name in self.interfaces_file.ifs():
             dialog = EditDialog(name, self.interfaces_file.ifs()[name], self)
             dialog.iface_changed.connect(self.on_iface_changed)
-            dialog.exec_()
+            dialog.exec()
  
     def on_iface_changed(self, iface):
         name = self.nets_w.currentText()
@@ -875,7 +875,7 @@ class NetworkWindow(TouchWindow):
         vbox.addWidget(lbl)
         vbox.addStretch()
         dialog.centralWidget.setLayout(vbox)
-        dialog.exec_()
+        dialog.exec()
 
 class FtcGuiPlugin(LauncherPlugin):
     def __init__(self, application):
@@ -894,7 +894,7 @@ if __name__ == "__main__":
         def __init__(self, args):
             super().__init__(args)
             module = FtcGuiPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):

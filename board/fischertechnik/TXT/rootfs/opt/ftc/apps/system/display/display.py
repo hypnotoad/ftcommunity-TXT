@@ -101,7 +101,7 @@ class DisplaySettingsPlugin(LauncherPlugin):
         msg.setText(QCoreApplication.translate("main", "Do you really want to save the current touchscreen calibration?"))
         msg.setPosButton(QCoreApplication.translate("main", "Save"))
         msg.setNegButton(QCoreApplication.translate("main", "No"))
-        success, text = msg.exec_()
+        success, text = msg.exec()
         if success == False or text == QCoreApplication.translate("main", "No"):
             return
         self.unset_reset_calibration_flag()
@@ -112,7 +112,7 @@ if __name__ == "__main__":
         def __init__(self, args):
             super().__init__(args)
             module = DisplaySettingsPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):

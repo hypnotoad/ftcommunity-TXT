@@ -146,7 +146,7 @@ class MonitorThread(QThread):
         scan_networks(IFACE)
         self.timer.start(2000) # Poll every 2 seconds
         
-        self.exec_()
+        self.exec()
 
     @pyqtSlot()
     def on_timer_tick(self):
@@ -336,7 +336,7 @@ if __name__ == "__main__":
         def __init__(self, args):
             super().__init__(args)
             module = FtcGuiPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):

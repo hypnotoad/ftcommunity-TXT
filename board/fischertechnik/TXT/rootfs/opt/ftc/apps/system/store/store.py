@@ -488,7 +488,7 @@ class AppDialog(TouchDialog):
             if not os.path.isfile(manifestfile):
                 msgBox = TouchMessageBox(QCoreApplication.translate("Error", "Error"), self)
                 msgBox.setText(QCoreApplication.translate("Error", "Update app path mismatch."))
-                msgBox.exec_()
+                msgBox.exec()
                 return
 
         self.package_loader = PackageLoader(self.package_name, self.url, self.package_branch)
@@ -525,7 +525,7 @@ class AppDialog(TouchDialog):
         if not ok:
             msgBox = TouchMessageBox(QCoreApplication.translate("Error", "Error"), self)
             msgBox.setText(msg)
-            msgBox.exec_()
+            msgBox.exec()
         else:
             self.refresh.emit()
 
@@ -550,7 +550,7 @@ class AppDialog(TouchDialog):
         else:
             msgBox = TouchMessageBox(QCoreApplication.translate("Error", "Error"), self)
             msgBox.setText(result[1])
-            msgBox.exec_()
+            msgBox.exec()
 
 class PackageListLoader(NetworkAccessManager):
     result = pyqtSignal(tuple)
@@ -737,7 +737,7 @@ class AppListWidget(QListWidget):
         if not result[0]:
             msgBox = TouchMessageBox(QCoreApplication.translate("Error", "Error"), self.parent)
             msgBox.setText(result[1])
-            msgBox.exec_()
+            msgBox.exec()
             return
             
         self.apps = result[1]
@@ -775,7 +775,7 @@ class AppListWidget(QListWidget):
         dialog = AppDialog(item.text(), self.url, app_parms, installed_version, self.parent)
         dialog.refresh.connect(self.on_refresh)
 
-        # exec_ breaks grabGesture: https://bugreports.qt.io/browse/QTBUG-67210
+        # exec breaks grabGesture: https://bugreports.qt.io/browse/QTBUG-67210
         dialog.show()
 
     def notify_launcher(self):
@@ -925,7 +925,7 @@ class FtcGuiPlugin(LauncherPlugin):
     def on_menu_new(self):
         dialog = NewRepoDialog(self.mainWindow)
         dialog.new_repo.connect(self.on_new_repo)
-        dialog.exec_()
+        dialog.exec()
 
     def on_new_repo(self, repo):
         # do some sanity checks
@@ -961,7 +961,7 @@ if __name__ == "__main__":
         def __init__(self, args):
             super().__init__(args)
             module = FtcGuiPlugin(self)
-            self.exec_()
+            self.exec()
     FtcGuiApplication(sys.argv)
 else:
     def createPlugin(launcher):
