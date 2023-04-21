@@ -925,8 +925,6 @@ class TcpServer(QTcpServer):
         clientConnection = self.nextPendingConnection()
         self.connections.append(clientConnection)
         clientConnection.readyRead.connect(self.receiveMessage)
-        clientConnection.disconnected.connect(self.removeConnection)
-        clientConnection.error.connect(self.socketError)
 
     def receiveMessage(self):
         # check clients for data
@@ -960,12 +958,6 @@ class TcpServer(QTcpServer):
                     else:
                         s.write("Unknown command\n".encode("utf8"))
                         print("Unknown command ", cmd)
-
-    def removeConnection(self):
-        pass
-
-    def socketError(self):
-        pass
 
 
 class LauncherPlugin(QObject):
