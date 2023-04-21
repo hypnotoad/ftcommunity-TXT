@@ -1,6 +1,6 @@
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt6.QtCore import *
+from PyQt6.QtGui import *
+from PyQt6.QtWidgets import *
 
 from TouchStyle import TouchDialog
 
@@ -113,7 +113,7 @@ class TouchKeyboard(TouchDialog):
         self.line = self.FocusLineEdit()
         self.line.setProperty("nopopup", True)
         self.line.setAlignment(Qt.AlignCenter)
-        self.line.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self.line.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         self.layout.addWidget(self.line)
         
         edit = QWidget()
@@ -122,13 +122,13 @@ class TouchKeyboard(TouchDialog):
 
         but = QPushButton(" ")
         but.setObjectName("osk_erase")
-        but.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        but.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         but.clicked.connect(self.key_erase)
         edit.hbox.addWidget(but)
 
         but = QPushButton(" ")
         but.setObjectName("keyboard_return")
-        but.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        but.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         but.clicked.connect(self.close)
         edit.hbox.addWidget(but)
         
@@ -158,7 +158,7 @@ class TouchKeyboard(TouchDialog):
                     but = self.KbdButton(keys[a][cnt], subs[a][cnt])
                     but.clicked.connect(self.key_pressed)
 
-                but.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+                but.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
                 if w < h:
                     page.grid.addWidget(but, cnt // 4, cnt % 4)
                 else:
@@ -168,7 +168,7 @@ class TouchKeyboard(TouchDialog):
             self.tab.addTab(page, self.keys_tab[a])
 
         self.tab.tabBar().setExpanding(True)
-        self.tab.tabBar().setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.tab.tabBar().setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
         self.layout.addWidget(self.tab)
     
     def focus(self, str, cpos):

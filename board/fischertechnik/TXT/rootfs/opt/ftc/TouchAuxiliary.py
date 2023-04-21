@@ -271,7 +271,7 @@ class TouchAuxCamWidget(QWidget):
         self.timer.timeout.connect(self.update)
         self.timer.start(1000/fps)
 
-        qsp = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        qsp = QSizePolicy.Policy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         qsp.setHeightForWidth(True)
         self.setSizePolicy(qsp)
 
@@ -386,7 +386,7 @@ class TouchAuxListRequester(TouchDialog):
         self.itemlist.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
         QScroller.grabGesture(self.itemlist.viewport(), QScroller.LeftMouseButtonGesture);
         self.itemlist.setObjectName("smalllabel")
-        self.itemlist.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.itemlist.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
         self.itemlist.addItems(items)
         self.itemlist.currentItemChanged.connect(self.on_itemchanged)
 
@@ -482,7 +482,7 @@ class TouchAuxRequestInteger(TouchDialog):
             
         # the dial 
         self.dial=QDial()
-        self.dial.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.dial.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
         self.dial.setNotchesVisible(True)
         self.dial.setRange(minval,maxval)
         self.dial.setValue(initvalue)

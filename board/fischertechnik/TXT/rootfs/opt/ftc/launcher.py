@@ -15,10 +15,10 @@ from TouchStyle import TouchDialog, TouchApplication, \
     TXT, BUTTON_THREAD, getScreenSize
 from touch_keyboard import TouchKeyboard
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtNetwork import *
+from PyQt6.QtCore import *
+from PyQt6.QtGui import *
+from PyQt6.QtWidgets import *
+from PyQt6.QtNetwork import *
 
 LOGFILE="/tmp/launcher.log"
 from logger import *
@@ -63,7 +63,7 @@ class MessageDialog(PlainDialog):
         self.layout.addStretch()
         lbl = QLabel(str)
         lbl.setWordWrap(True)
-        lbl.setAlignment(Qt.AlignCenter)
+        lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layout.addWidget(lbl)
         self.layout.addStretch()
         self.setLayout(self.layout)
@@ -93,7 +93,7 @@ class ConfirmationDialog(PlainDialog):
             else:
                 lbl = QLabel(s)
             lbl.setWordWrap(True)
-            lbl.setAlignment(Qt.AlignCenter)
+            lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
             self.layout.addWidget(lbl)
             self.layout.addStretch()
         # display a the "ok" + "cancel" buttons
@@ -289,7 +289,7 @@ class BusyAnimation(QWidget):
         img.fill(Qt.transparent)
         painter = QPainter(img)
         painter.setPen(Qt.white)
-        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width() - 1, img.height() - 1)
         painter.end()
@@ -321,7 +321,7 @@ class BusyAnimation(QWidget):
         radius = min(self.width(), self.height()) // 2 - 16
         painter = QPainter()
         painter.begin(self)
-        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         painter.translate(self.width() // 2, self.height() // 2)
         painter.rotate(45)
         painter.rotate(self.step)
@@ -346,7 +346,7 @@ class FolderName(TouchKeyboard):
 class FolderOpIcon(QToolButton):
     def __init__(self, type, parent=None):
         super(FolderOpIcon, self).__init__(parent)
-        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Expanding)
         self.setToolButtonStyle(Qt.ToolButtonIconOnly)
         pix = Icon(type + ".png")
         icon = QIcon(pix)
@@ -382,8 +382,8 @@ class FolderItem(BaseItem):
         self["icon"] = QPixmap(os.path.join(BASE, "media", "icon_folder.png"))
         # and create a folder icon of the first content icon
         painter = QPainter(self["icon"])
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
+        painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform, True)
         # positions and size of sub icons
         folder_grid = {'x': 3, 'y': 2}
         offset = {'x': 1, 'y': 16}
@@ -629,8 +629,8 @@ class AppPopup(QFrame):
         vbox.setSpacing(0)
         title = QLabel(self.parent().app["name"], self)
         title.setObjectName("titlebar")
-        title.setAlignment(Qt.AlignCenter)
-        title.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Fixed)
         vbox.addWidget(title)
         self.setLayout(vbox)
         # get access to the icongrid
@@ -773,14 +773,14 @@ class AppIcon(QToolButton):
         self.setIcon(QIcon(app["icon"]))
         self.setIconSize(app["icon"].size())
 
-        self.grabGesture(Qt.TapAndHoldGesture, Qt.DontStartGestureOnChildren)
+        self.grabGesture(Qt.GestureType.TapAndHoldGesture, Qt.GestureFlag.DontStartGestureOnChildren)
 
-        self.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.setObjectName("launcher-icon")
         
 
     def event(self, event):
-        if event.type() != QEvent.Gesture:
+        if event.type() != QEvent.Type.Gesture:
             return QToolButton.event(self, event)
         
         for g in event.activeGestures():
@@ -811,7 +811,7 @@ class IconGrid(QWidget):
     def __init__(self, apps):
         super(IconGrid, self).__init__()
         self.apps = apps
-        self.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        self.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
         self.grid = QGridLayout()
         self.grid.setSpacing(0)
         self.grid.setContentsMargins(0, 10, 0, 10)
@@ -858,7 +858,7 @@ class IconGrid(QWidget):
                 but.clicked.connect(self.do_launch)
             else:
                 but.clicked.connect(self.do_open_folder)
-            self.grid.addWidget(but, index // self.columns, index % self.columns, Qt.AlignCenter)
+            self.grid.addWidget(but, index // self.columns, index % self.columns, Qt.AlignmentFlag.AlignCenter)
             index += 1
 
     def on_refresh(self):
@@ -1029,10 +1029,10 @@ class VerticalScrollArea(QScrollArea):
     def __init__(self, content, parent=None):
         super(VerticalScrollArea, self).__init__(parent)
         self.setWidgetResizable(True)
-        self.setFrameStyle(QFrame.NoFrame)
-        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        QScroller.grabGesture(self, QScroller.LeftMouseButtonGesture);
+        self.setFrameStyle(QFrame.Shape.NoFrame)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        QScroller.grabGesture(self, QScroller.ScrollerGestureType.LeftMouseButtonGesture);
         self.setWidget(content)
 
         

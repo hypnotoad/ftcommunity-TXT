@@ -159,7 +159,7 @@ class BusyAnimation(QWidget):
 
         painter = QPainter(img)
         painter.setPen(Qt.white)
-        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width()-1, img.height()-1)
         painter.end()
@@ -179,7 +179,7 @@ class BusyAnimation(QWidget):
         painter = QPainter()
         painter.begin(self)
 
-        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         painter.translate(self.width()//2, self.height()//2)
         painter.rotate(45)

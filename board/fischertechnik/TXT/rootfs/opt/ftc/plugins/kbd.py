@@ -4,7 +4,7 @@
 
 import os
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt6.QtCore import QCoreApplication
 
 def name():
     return QCoreApplication.translate("PluginKbd", "Keyboard")

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # plugin checking for RTC interrupts. Keep quiet if there were none
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt6.QtCore import QCoreApplication
 
 import os
 

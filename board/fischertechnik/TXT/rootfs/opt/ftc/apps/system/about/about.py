@@ -4,7 +4,7 @@
 import sys, os
 from TxtStyle import *
 from launcher import LauncherPlugin
-from PyQt5 import QtCore
+from PyQt6 import QtCore
 
 VERSION_FILE = "/etc/fw-ver.txt"
 

@@ -5,7 +5,7 @@ import sys, os, subprocess, time, re
 from TouchStyle import *
 from launcher import LauncherPlugin, MessageDialog
 
-from PyQt5.QtCore import QTimer
+from PyQt6.QtCore import QTimer
 
 class DisplaySettingsPlugin(LauncherPlugin):
 

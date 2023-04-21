@@ -12,8 +12,8 @@ from pathlib import Path
 
 from TouchStyle import *
 
-from PyQt5.QtNetwork import *
-from PyQt5 import QtCore
+from PyQt6.QtNetwork import *
+from PyQt6 import QtCore
 
 import xml.etree.ElementTree as ET
 
@@ -142,7 +142,7 @@ class BusyAnimation(QWidget):
 
         painter = QPainter(img)
         painter.setPen(Qt.white)
-        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.setBrush(QBrush(color))
         painter.drawEllipse(0, 0, img.width()-1, img.height()-1)
         painter.end()
@@ -175,7 +175,7 @@ class BusyAnimation(QWidget):
             # draw text in center
             painter.drawText(QRect(0, 0, self.width(), self.height()), Qt.AlignCenter, str(self.percent)+"%" )
 
-        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         painter.translate(self.width()//2, self.height()//2)
         painter.rotate(45)

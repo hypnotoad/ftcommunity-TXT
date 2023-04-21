@@ -5,9 +5,9 @@
 # the like
 import struct, os, platform, socket
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt6.QtCore import *
+from PyQt6.QtGui import *
+from PyQt6.QtWidgets import *
 
 __version__ = '1.8'
 
@@ -125,7 +125,7 @@ class TouchTitle(QLabel):
         super(TouchTitle, self).__init__(str, parent)
         self.setObjectName("titlebar")
         self.setAlignment(Qt.AlignCenter)
-        self.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Fixed)
         self.close = QPushButton(self)
         self.close.setObjectName("closebut")
         self.parent = parent
